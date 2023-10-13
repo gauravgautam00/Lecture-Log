@@ -1,0 +1,41 @@
+body{
+    background-color: black;
+}
+#container{
+    /* color:red; */
+    height:3rem;
+    /* width: 20rem; */
+    border:2px solid grey;
+}
+#add_student{
+    /* height:1rem; */
+    width:10rem;
+    text-align: center;
+    border-radius: 5px;
+    border:2px solid wheat;
+    padding:10px;
+    font-size: larger;
+    margin-top:1rem;
+
+}
+#add_student_form{
+    border:2px solid grey;
+}
+#add_student_form_studentName{
+    margin-top:1rem;
+
+}
+#add_student_form_input_studentName{
+    margin-top:5px;
+    margin-left:10px;
+}
+
+#add_student_form_doubt{
+    margin-top:1rem;
+
+}
+#add_student_form_input_doubt{
+    margin-top:5px;
+    margin-left:10px;
+
+}
