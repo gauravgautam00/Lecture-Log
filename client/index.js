@@ -1,10 +1,17 @@
 const main_data_container = document.getElementById("main_data_container");
-
+// <!-- //470 right -->
 const add_student_form = document.getElementById("add_student_form");
 const add_student_form_input_studentName = document.getElementById("add_student_form_input_studentName");
 const add_student_form_input_doubt = document.getElementById("add_student_form_input_doubt");
 const add_student_form_input_extra = document.getElementById("add_student_form_input_extra");
+const main_container_queryAdd_button =document.getElementById("main_container_queryAdd_button");
 
+main_container_queryAdd_button.onclick=(e)=>{
+    window.scrollTo({
+        top:620,
+        behavior:'smooth'
+    });
+}
 
 add_student_form.onsubmit=(e)=>{
     e.preventDefault();
@@ -16,9 +23,7 @@ add_student_form.onsubmit=(e)=>{
      const innerDiv1=document.createElement("div");
      const innerDiv2 = document.createElement("div");
 
-    //innerDiv1
-    //innerDiv1
-    //innerDiv1
+ 
      div.appendChild(innerDiv1);
      innerDiv1.style.marginTop="1rem";
      innerDiv1.style.border="2px solid grey";
