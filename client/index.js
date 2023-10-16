@@ -5,10 +5,19 @@ const add_student_form_input_studentName = document.getElementById("add_student_
 const add_student_form_input_doubt = document.getElementById("add_student_form_input_doubt");
 const add_student_form_input_extra = document.getElementById("add_student_form_input_extra");
 const main_container_queryAdd_button =document.getElementById("main_container_queryAdd_button");
+const main_container_queryView_button =document.getElementById("main_container_queryView_button");
+
 
 main_container_queryAdd_button.onclick=(e)=>{
     window.scrollTo({
         top:620,
+        behavior:'smooth'
+    });
+}
+
+main_container_queryView_button.onclick=(e)=>{
+    window.scrollTo({
+        top:1280,
         behavior:'smooth'
     });
 }

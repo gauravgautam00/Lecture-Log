@@ -104,7 +104,7 @@ transform:scale(1.1);
 }
 #main_container_queryAdd_button{
     height: 1.5rem;
-    width: 25rem;
+    width: 13rem;
     background-color: #0474F2;
     color: white;
     padding: 10px;
@@ -112,7 +112,20 @@ transform:scale(1.1);
     font-size: larger;
     border-radius: 10px;
     text-align: center;
-    margin-left: 3rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+#main_container_queryView_button{
+    height: 1.5rem;
+    width: 13rem;
+    background-color: #0474F2;
+    color: white;
+    padding: 10px;
+    margin-top: -2.74rem;
+    font-size: larger;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 19rem;
     cursor: pointer;
 }
 
@@ -130,7 +143,7 @@ transform:scale(1.1);
 
 #add_query_container{
 border:2px solid red;
-/* height:30rem; */
+height:38rem;
 margin-top:2rem;
 }
 
@@ -147,59 +160,66 @@ margin-top:2rem;
 /*ADD STUDENT LEFT PART */
 /*ADD STUDENT LEFT PART */
 
-
+#add_query_container_title{
+    text-align: center;
+    background-color: #0474F2;
+    color:white;
+    font-size: x-large;
+    padding:8px
+}
 
 #add_query_container_leftPart{
     padding: 26px;
   
-    width: 50%;
-    height: 29.7rem;
-    border: 2px solid purple;
+    width: 45%;
+    
+    /* border: 2px solid purple; */
 }
-#add_student_form{
-    border: 2px solid var(--main-color);
+#add_student_left_form{
+    /* border: 2px solid var(--main-color); */
     color: var(--main-color);
-    height: 100%;
+    /* height: 100%; */
     
     text-align: center;
-    width: 90.7%;
+    width: 97.7%;
+    margin-top:-1rem;
     overflow-y:scroll;
 }
-#add_student_form_groupA{
+#add_student_left_form_groupA{
     border: 2px solid red;
     width: 10rem;
-    margin-left: 3rem;
+    margin-left: 2.5rem;
     margin-top: 2rem;
     padding: 16px;
     cursor: pointer;
 }
-#add_student_form_groupB{
+#add_student_left_form_groupB{
     border: 2px solid red;
-    margin-left: 19rem;
+    margin-left: 18.6rem;
     padding: 16px;
     margin-top: -3.4rem;
     width: 10rem;
     cursor: pointer;
 
 }
-#add_student_form_studentName{
+#add_student_left_form_studentName{
     margin-top: 2rem;
     margin-left: -19.4rem;
 
 }
-#add_student_form_input_studentName{
+#add_student_left_form_input_studentName{
     width: 28rem;
     margin-left: -0.3rem;
     height: 1.8rem;
     border-radius: 5px;
     margin-top: 7px;
 }
-#add_student_form_doubt
+#add_student_left_form_doubt
 {
     margin-top: 2rem;
     margin-left: -18.4rem;
 }
-#add_student_form_input_doubt{
+#add_student_left_form_input_doubt{
     margin-top:1rem;
     color:var(--main-color);
     border:2px solid var(--main-color);
@@ -212,24 +232,90 @@ margin-top:2rem;
 
 }
 
-#add_student_form_extra{
+#add_student_left_form_preferences{
     margin-top: 2rem;
     margin-left: -21.4rem;
 }
-#add_student_form_input_extra{
-    margin-top:5px;
-    margin-left:10px;
-    color:var(--main-color);
-    border:2px solid var(--main-color);
+#add_Student_left_form_preferences_red{
+    height: 1.7rem;
     width: 28rem;
-    margin-left: -0.3rem;
-    height: 1.8rem;
-    border-radius: 5px;
-    margin-top: 7px;
+    border: 2px solid red;
+    margin-left: 2.5rem;
+    margin-top: 13px;
+}
+#add_Student_left_form_preferences_yellow{
+    height: 1.7rem;
+    width: 28rem;
+    border: 2px solid yellow;
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+}
+#add_Student_left_form_preferences_blue{
+    height: 1.7rem;
+    width: 28rem;
+    border: 2px solid blue;
+    margin-left: 2.4rem;
+    margin-top: 1rem;
+}
 
+
+
+
+
+
+
+/*finished   ADD STUDENT LEFT PART */
+/*finished   ADD STUDENT LEFT PART */
+/*finished   ADD STUDENT LEFT PART */
+/*finished   ADD STUDENT LEFT PART */
+/*finished   ADD STUDENT LEFT PART */
+/*finished   ADD STUDENT LEFT PART */
+
+
+
+/* ADD STUDENT RIGHT PART */
+/* ADD STUDENT RIGHT PART */
+/* ADD STUDENT RIGHT PART */
+/* ADD STUDENT RIGHT PART */
+/* ADD STUDENT RIGHT PART */
+
+
+#add_query_container_rightPart{
+    /* border: 2px solid green; */
+    width: 50.5%;
+    height: 77.4%;
+    top: -30.5rem;
+    position: relative;
+    left: 38.8rem;
+    /* text-align:center */
+    overflow-y: scroll;
+}
+#add_query_container_rightPart_queryBoxTitle{
+    margin-top: 2rem;
+    font-size: large;
+    margin-left: 2rem;
+}
+#add_query_container_rightPart_queryBoxTextarea{
+    margin-top: 11px;
+    margin-left: 2rem;
+    width: 537px;
+    height: 253px;
+    border-radius: 7px;
+}
+#add_query_container_rightPart_tagsTitle{
+    margin-left: 2rem;
+    margin-top: 3rem;
+}
+#add_query_container_rightPart_tagsInput{
+    margin-left: 2rem;
+    border-radius: 5px;
+    height: 1.7rem;
+    margin-top: 8px;
+    width: 33.5rem;
 }
 #add_student_form_submitButton{
-    margin-top: 3rem;
+    margin-top: -29.4rem;
+    margin-left:25rem;
 }
 #add_student_form_submitButton_real{
     width: 28rem;
@@ -237,31 +323,11 @@ margin-top:2rem;
     border: none;
     cursor: pointer;
     border-radius: 7px;
-    margin-bottom: 10px;
     font-size: large;
     color: white;
     height: 2.2rem;
     background-color: #0474F2;
 }
-
-
-
-
-/*finished   ADD STUDENT LEFT PART */
-/*finished   ADD STUDENT LEFT PART */
-/*finished   ADD STUDENT LEFT PART */
-/*finished   ADD STUDENT LEFT PART */
-/*finished   ADD STUDENT LEFT PART */
-/*finished   ADD STUDENT LEFT PART */
-
-
-
-/* ADD STUDENT RIGHT PART */
-/* ADD STUDENT RIGHT PART */
-/* ADD STUDENT RIGHT PART */
-/* ADD STUDENT RIGHT PART */
-/* ADD STUDENT RIGHT PART */
-
 /*finished  ADD STUDENT RIGHT PART */
 /*finished  ADD STUDENT RIGHT PART */
 /*finished  ADD STUDENT RIGHT PART */
