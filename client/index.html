@@ -11,6 +11,8 @@
 <body>
     
 <div id="header">Lecture Log</div>
+
+<!-- MAIN CONTAINER -->
 <div id="main_container">
 <div id="main_container_left_part">
 <div id="main_container_left_part_title">
@@ -71,8 +73,12 @@
     <div id="add_query_container_title">
         Add Student Query
     </div>
+
+    <form id="add_query_form">
+        
     <div id="add_query_container_leftPart">
-<form id="add_student_left_form">
+        
+<div id="add_student_left_form">
     <div id="add_student_left_form_groupA">
         Group A
     </div>
@@ -80,45 +86,59 @@
         Group B
     </div>
     <div id="add_student_left_form_studentName">Enter the Student Name</div>
-    <input  type="text" id="add_student_left_form_input_studentName" placeholder="type here" autocomplete="off">
+    <input name="add_student_left_form_input_studentName_name"  type="text" id="add_student_left_form_input_studentName"  placeholder="type here" autocomplete="off"
+    value="Gaurav Gautam">
     
-    <div id="add_student_left_form_doubt">Enter the doubt of Student</div>
-    <textarea type="text" id="add_student_left_form_input_doubt" placeholder="type here"></textarea>
-
+    <div id="add_student_left_form_doubt">Enter the title of Doubt</div>
+    <input type="text" id="add_student_left_form_input_doubtTitle"
+     name="add_student_left_form_input_doubtTitle_name"
+      placeholder="type here" value="Regarding the backend stuff"></input>
+    <!-- <input name="lll">  -->
     <div id="add_student_left_form_preferences">Select Preferences</div>
      <div id="add_Student_left_form_preferences_red">Urgent</div>
      <div id="add_Student_left_form_preferences_yellow">Research Required</div>                                                                                                                                                                                                                                                                                                                                                                                                  
      <div id="add_Student_left_form_preferences_blue">To-do</div>
 
     
-</form>
+</div>
 </div>
 
 <div id="add_query_container_rightPart">
+
 <div id="add_query_container_rightPart_queryBoxTitle">
     Enter Query
 </div>
-<textarea id="add_query_container_rightPart_queryBoxTextarea">
+<textarea id="add_query_container_rightPart_queryBoxTextarea" name="add_query_container_rightPart_queryBoxTextarea_name" 
+>
+value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum, quam aspernatur nulla, dicta eius culpa a, aut cupiditate odio nihil praesentium dignissimos ducimus ullam fugit. Nostrum, eligendi quidem! Omnis.
 
 </textarea>
-<div id="add_query_container_rightPart_tagsTitle">
+<div id="add_query_container_rightPart_tagsTitle" >
     Enter tags
 </div>
-<input id="add_query_container_rightPart_tagsInput">
+<input id="add_query_container_rightPart_tagsInput" name="add_query_container_rightPart_tagsTitle_name"
+value="hacktoberfest">
 </input>
 </div>
-<div id="add_student_form_submitButton"><button 
+
+<div id="add_student_form_submitButton">
+    <button 
     id="add_student_form_submitButton_real"type="submit">Submit</button>
 </div>
-</div>
-
-
-
-<div id="stored_container_heading">Stored Data</div>
-<div id="stored_data_container">
-
+</form>
 
 </div>
+
+
+<!-- STORED CONTAINER -->
+<div id="stored_container_heading">Stored  Data
+
+</div>
+ <div id="stored_data_container">
+  
+</div>
+     
+
     <script src="index.js"></script>
 </body>
 </html>
