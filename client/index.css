@@ -18,7 +18,7 @@ body{
     /* width: 20rem; */
     margin-top: 0px;
     /* border: 2px solid var(--main-color); */
-    color: #dfcb17;
+    color: white;
     padding: 10px 0px 0px 0px;
     text-align: center;
     font-size: xx-large;
@@ -37,16 +37,17 @@ body{
 #main_container{
     
   
-    border: 2px solid white;
+    /* border: 2px solid white; */
     height:35rem;
     background-color: black;
-    /* margin-top:2rem; */
+    margin-top:-2rem;
   
     
 }
 #main_container_left_part{
    margin-top: 1.5rem;
     width: 50%;
+    padding:0.1px;
     /* margin-top: 10rem; */
     height: 33rem;
 }
@@ -55,7 +56,7 @@ body{
     font-size: 3.5rem;
     margin-left: 2rem;
     line-height: 80px;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     color:white;
 }
 #main_container_left_part_para{
@@ -72,8 +73,8 @@ body{
     height: 32rem;
     display: flex;
     margin-left: 42rem;
-    border-radius: 94px;
-    margin-top:-32.3rem;
+    border-radius: 39px;
+    margin-top:-30.3rem;
 }
 .main_container_rightPart_child{
     height: 27rem;
@@ -81,7 +82,7 @@ body{
     flex: 0 0 auto;
     border:2px solid black;
     margin-left:66px;
-    border-radius: 94px;
+    border-radius: 39px;
     
     overflow:hidden;
     transition:border 0.4s;
@@ -96,7 +97,7 @@ body{
 .main_container_rightPart_child_image{
     height: 27.4rem;
     width: 25rem;
-    border-radius: 94px;
+    border-radius: 39px;
     transition: transform 0.4s;
 }
 .main_container_rightPart_child_image:hover{
@@ -142,7 +143,7 @@ transform:scale(1.1);
 
 
 #add_query_container{
-border:2px solid red;
+/* border:2px solid red; */
 height:38rem;
 margin-top:2rem;
 }
@@ -217,9 +218,9 @@ margin-top:2rem;
 #add_student_left_form_doubt
 {
     margin-top: 2rem;
-    margin-left: -18.4rem;
+    margin-left: -19.4rem;
 }
-#add_student_left_form_input_doubt{
+#add_student_left_form_input_doubtTitle{
     margin-top:1rem;
     color:var(--main-color);
     border:2px solid var(--main-color);
@@ -246,7 +247,7 @@ margin-top:2rem;
 #add_Student_left_form_preferences_yellow{
     height: 1.7rem;
     width: 28rem;
-    border: 2px solid yellow;
+    border: 2px solid #f8b800;
     margin-left: 2.5rem;
     margin-top: 1rem;
 }
@@ -314,7 +315,7 @@ margin-top:2rem;
     width: 33.5rem;
 }
 #add_student_form_submitButton{
-    margin-top: -29.4rem;
+    margin-top: -26.4rem;
     margin-left:25rem;
 }
 #add_student_form_submitButton_real{
