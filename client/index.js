@@ -66,13 +66,14 @@ const fetchData=()=>{
     main_data_container.innerHTML="";  
     arr.map((data,index)=>{
         const div = document.createElement("div");
-        let color=data.preferences==="urgent"?"red":(data.preferences=="research-required"?"#f8b800":"blue");
+       if(data.color=="black"){ let colorm=data.preferences==="urgent"?"red":(data.preferences=="research-required"?"#f8b800":"blue");
         console.log(data.preferences)
 if(data.preferences===""){
-    color="black"
+    colorm="black"
 }
+data.color=colorm;}
         main_data_container.appendChild(div);
-        div.style.border=`4px solid ${color}`;
+        div.style.border=`4px solid ${data.color}`;
         div.style.marginTop="1rem"; 
         // div.style.marginTop="3rem";
          const innerDiv1=document.createElement("div");
@@ -84,6 +85,7 @@ if(data.preferences===""){
          innerDiv1.style.height="4rem";
         //  innerDiv1.style.border="2px solid black";
     
+
 //first div
 //first div         
          const innerDiv1_studentName = document.createElement("div");
@@ -119,7 +121,11 @@ if(data.preferences===""){
          innerDiv1_complete.style.backgroundColor = "green";
          innerDiv1_complete.style.color = "white";
          innerDiv1_complete.style.fontSize="large"
-        
+
+        innerDiv1_complete.onclick=()=>{
+            data.color="green";
+            fetchData();
+        }
          
 
         innerDiv1.appendChild(innerDiv1_progress);
@@ -133,7 +139,10 @@ if(data.preferences===""){
          innerDiv1_progress.style.backgroundColor = "teal";
          innerDiv1_progress.style.color = "white";
          innerDiv1_progress.style.fontSize="large"
-         
+         innerDiv1_progress.onclick=()=>{
+            data.color="teal";
+            fetchData();
+        }
 
         innerDiv1.appendChild(innerDiv1_delete);
         innerDiv1_delete.innerHTML="Delete Query"
@@ -165,25 +174,14 @@ const innerDiv2_solution = document.createElement("div");
 
 
 
-         innerDiv2.style.border=`2px solid ${color}`;
+         innerDiv2.style.border=`2px solid ${data.color}`;
          innerDiv2.style.height="24.3rem";
          
          innerDiv2.appendChild(innerDiv2_doubtTitle);
          innerDiv2_doubtTitle.innerHTML=`Title - ${data.titleOfDoubt}`
          innerDiv2_doubtTitle.style.marginTop="8px";
          innerDiv2_doubtTitle.style.fontSize="large";
-        //  innerDiv2_doubtTitle.style.marginTop="1rem";
-    
-    // const innerDiv2_input_edit=document.createElement("input");
-    // const innerDiv2_editclick=document.createElement("div");
-    // innerDiv2.appendChild(innerDiv2_input_edit);
-    // innerDiv2.appendChild(innerDiv2_editclick);
-    // innerDiv2_editclick.innerHTML="Edit";
-    // innerDiv2_editclick.style.height="2rem"
-    // innerDiv2_editclick.style.width="4rem"
-    // innerDiv2_editclick.onclick=(()=>{editQuery(innerDiv2_input_edit.value , index);
-    // })
-
+       
 
 
          innerDiv2.appendChild(innerDiv2_query);
@@ -227,7 +225,7 @@ const innerDiv2_solution = document.createElement("div");
         innerDiv2_solution.innerHTML=`<div style="height: 2rem;
         font-size: x-large;
         text-align: center;
-        background-color: ${color};
+        background-color: ${data.color};
         color: white;"> Solution</div>`
         innerDiv2_solution.style.marginLeft="41rem";
         innerDiv2_solution.style.width="37.3rem";
@@ -255,10 +253,11 @@ const innerDiv2_solution = document.createElement("div");
         //general/general/general/general/general/general//general/general/general/general/general/general
         innerDiv2_solution.appendChild(innerDiv2_solution_general);
         innerDiv2_solution_general.innerHTML="General"
-        innerDiv2_solution_general.style.border=`2px solid ${color}`
+        innerDiv2_solution_general.style.border=`2px solid ${data.color}`
         innerDiv2_solution_general.style.marginTop="3px"
         innerDiv2_solution_general.style.fontSize="x-large"
-        // innerDiv2_solution_general.style.paddingBottom="4px";
+
+        innerDiv2_solution_general.style.paddingBottom="4px";
        
 
         //box of general addin
@@ -276,6 +275,7 @@ const innerDiv2_solution = document.createElement("div");
         innerDiv2_solution_general_showGeneral.style.fontSize="15px";
         innerDiv2_solution_general_showGeneral.style.marginTop="-24px";
         innerDiv2_solution_general_showGeneral.style.cursor="pointer";
+       
 
 
 
@@ -307,8 +307,6 @@ const innerDiv2_solution = document.createElement("div");
 
    const innerDiv2_solution_general_BoxClicked_save=document.createElement("div");
    
-//    innerDiv2_solution_general_BoxClicked_save.style.display="none";
-// 
    //show box of general
    //show box of general
         const innerDiv2_solution_general_showBox=document.createElement("div");
@@ -316,6 +314,8 @@ const innerDiv2_solution = document.createElement("div");
         innerDiv2_solution_general_showBox.innerHTML=`${data.solutionGeneral}`
         innerDiv2_solution_general_showBox.style.border="2px solid";
         innerDiv2_solution_general_showBox.style.height="9rem";
+        innerDiv2_solution_general_showBox.style.fontFamily="sans-serif";
+
         innerDiv2_solution_general_showBox.style.overflowY="scroll";
         innerDiv2_solution_general_showBox.style.fontSize="15px";
         // innerDiv2_solution_general_showBox.style.marginBottom="29px";
@@ -331,13 +331,21 @@ const innerDiv2_solution = document.createElement("div");
    innerDiv2_solution_general_BoxClicked_save.style.width="3rem";
    innerDiv2_solution_general_BoxClicked_save.style.border="1px solid";
    innerDiv2_solution_general_BoxClicked_save.style.borderRadius="7px";
+
+   innerDiv2_solution_general_BoxClicked_save.onclick=()=>{
+    innerDiv2_solution_general_showBox.style.display="none";
+    innerDiv2_solution_general_BoxClicked_save.style.display="none";
+
+   }
             
             innerDiv2_solution_general_addBox.style.display="none";
             innerDiv2_solution_general_editBox.style.display="none";
             if(innerDiv2_solution_general_showBox.style.display=="none"){
-                innerDiv2_solution_general_showBox.style.display="block"
+                innerDiv2_solution_general_showBox.style.display="block";
+                innerDiv2_solution_general_BoxClicked_save.style.display="block";
             }else{
                 innerDiv2_solution_general_showBox.style.display="none";
+                innerDiv2_solution_general_BoxClicked_save.style.display="none";
             }
         }
 
@@ -378,9 +386,11 @@ fetchData();
     innerDiv2_solution_general_editBox.style.display="none";
 
        if(innerDiv2_solution_general_addBox.style.display=="none"){
-           innerDiv2_solution_general_addBox.style.display="block"
+           innerDiv2_solution_general_addBox.style.display="block";
+           innerDiv2_solution_general_BoxClicked_save.style.display="block";
        }else{
            innerDiv2_solution_general_addBox.style.display="none";
+           innerDiv2_solution_general_BoxClicked_save.style.display="none";
        }
    }
 
@@ -421,9 +431,12 @@ fetchData();
     innerDiv2_solution_general_showBox.style.display="none";
     innerDiv2_solution_general_addBox.style.display="none";
        if(innerDiv2_solution_general_editBox.style.display=="none"){
-           innerDiv2_solution_general_editBox.style.display="block"
+           innerDiv2_solution_general_editBox.style.display="block";
+           innerDiv2_solution_general_BoxClicked_save.style.display="block";
+
        }else{
            innerDiv2_solution_general_editBox.style.display="none";
+           innerDiv2_solution_general_BoxClicked_save.style.display="none";
        }
    }
 
@@ -442,10 +455,10 @@ fetchData();
         //links//links//links
         innerDiv2_solution.appendChild(innerDiv2_solution_links);
         innerDiv2_solution_links.innerHTML="Links"
-        innerDiv2_solution_links.style.border=`2px solid ${color}`
+        innerDiv2_solution_links.style.border=`2px solid ${data.color}`
         innerDiv2_solution_links.style.marginTop="1rem"
         innerDiv2_solution_links.style.fontSize="x-large"
-        innerDiv2_solution_links.style.height="2rem";
+        innerDiv2_solution_links.style.paddingBottom="10px";
 
         const innerDiv2_solution_links_showlinks=document.createElement("div");
 
@@ -469,7 +482,8 @@ fetchData();
    innerDiv2_solution_links_addlinks.style.width="3rem";
    innerDiv2_solution_links_addlinks.style.marginLeft="29.3rem";
    innerDiv2_solution_links_addlinks.style.fontSize="15px";
-   innerDiv2_solution_links_addlinks.style.marginTop="-21px";
+   innerDiv2_solution_links_addlinks.style.marginTop="-18.6px";
+   innerDiv2_solution_links_addlinks.style.cursor="pointer";
 
    
 
@@ -479,9 +493,160 @@ fetchData();
    innerDiv2_solution_links_editlinks.style.width="3rem";
    innerDiv2_solution_links_editlinks.style.marginLeft="32.8rem";
    innerDiv2_solution_links_editlinks.style.fontSize="15px";
-   innerDiv2_solution_links_editlinks.style.marginTop="-19px";
+   innerDiv2_solution_links_editlinks.style.marginTop="-18.6px";
+   innerDiv2_solution_links_editlinks.style.cursor="pointer";
 
 
+//Box Clicked
+//Box Clicked
+//Box Clicked
+
+const innerDiv2_solution_links_BoxClicked_save=document.createElement("div");
+   
+//show box of link
+//show box of link
+     const innerDiv2_solution_links_showBox=document.createElement("div");
+     innerDiv2_solution_links.appendChild(innerDiv2_solution_links_showBox);
+     innerDiv2_solution_links_showBox.innerHTML=`${data.solutionLinks}`
+     innerDiv2_solution_links_showBox.style.border="2px solid";
+     innerDiv2_solution_links_showBox.style.height="9rem";
+     innerDiv2_solution_links_showBox.style.overflowY="scroll";
+     innerDiv2_solution_links_showBox.style.fontSize="15px";
+     innerDiv2_solution_links_showBox.style.fontFamily="sans-serif";
+
+     innerDiv2_solution_links_showBox.style.marginTop="6px";
+     
+
+     innerDiv2_solution_links_showBox.style.display="none";
+    
+     innerDiv2_solution_links_showlinks.onclick=()=>{
+         innerDiv2_solution_links.appendChild(innerDiv2_solution_links_BoxClicked_save);
+
+         innerDiv2_solution_links_BoxClicked_save.innerHTML="Close";
+ innerDiv2_solution_links_BoxClicked_save.style.display="block";
+ innerDiv2_solution_links_BoxClicked_save.style.padding="3px";
+innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
+innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
+innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
+innerDiv2_solution_links_BoxClicked_save.style.borderRadius=="7px";
+innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+
+
+innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
+ innerDiv2_solution_links_showBox.style.display="none";
+ innerDiv2_solution_links_BoxClicked_save.style.display="none";
+
+}
+         
+         innerDiv2_solution_links_addBox.style.display="none";
+         innerDiv2_solution_links_editBox.style.display="none";
+         if(innerDiv2_solution_links_showBox.style.display=="none"){
+             innerDiv2_solution_links_showBox.style.display="block";
+             innerDiv2_solution_links_BoxClicked_save.style.display="block";
+         }else{
+             innerDiv2_solution_links_showBox.style.display="none";
+             innerDiv2_solution_links_BoxClicked_save.style.display="none";
+         }
+     }
+
+
+     //add box of links
+//add box of links
+
+const innerDiv2_solution_links_addBox=document.createElement("textarea");
+innerDiv2_solution_links.appendChild(innerDiv2_solution_links_addBox);
+
+innerDiv2_solution_links_addBox.style.border="2px solid ";
+innerDiv2_solution_links_addBox.style.height="9rem";
+innerDiv2_solution_links_addBox.style.width="35.5rem";
+innerDiv2_solution_links_addBox.style.fontFamily="sans-sarif";
+innerDiv2_solution_links_addBox.style.display="none";
+innerDiv2_solution_links_addBox.style.overflowY="scroll";
+innerDiv2_solution_links_addBox.style.fontSize="15px";
+innerDiv2_solution_links_addBox.style.marginTop="6px";
+
+    
+
+     
+innerDiv2_solution_links_addlinks.onclick=()=>{
+ innerDiv2_solution_links.appendChild(innerDiv2_solution_links_BoxClicked_save);
+
+ innerDiv2_solution_links_BoxClicked_save.innerHTML="Save";
+ innerDiv2_solution_links_BoxClicked_save.style.display="block";
+ innerDiv2_solution_links_BoxClicked_save.style.padding="3px";
+innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
+innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
+innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
+innerDiv2_solution_links_BoxClicked_save.style.borderRadius="7px";
+innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+
+
+innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
+ let val= innerDiv2_solution_links_addBox.value;
+ data.solutionLinks=(val);
+fetchData();
+}
+ innerDiv2_solution_links_showBox.style.display="none";
+ innerDiv2_solution_links_editBox.style.display="none";
+
+    if(innerDiv2_solution_links_addBox.style.display=="none"){
+        innerDiv2_solution_links_addBox.style.display="block";
+        innerDiv2_solution_links_BoxClicked_save.style.display="block";
+    }else{
+        innerDiv2_solution_links_addBox.style.display="none";
+        innerDiv2_solution_links_BoxClicked_save.style.display="none";
+    }
+}
+
+//edit box of links
+//wdit box of links
+const innerDiv2_solution_links_editBox=document.createElement("textarea");
+innerDiv2_solution_links.appendChild(innerDiv2_solution_links_editBox);
+innerDiv2_solution_links_editBox.innerHTML=`${data.solutionLinks}`
+innerDiv2_solution_links_editBox.style.border="2px solid";
+innerDiv2_solution_links_editBox.style.height="9rem";
+innerDiv2_solution_links_editBox.style.display="none";
+innerDiv2_solution_links_editBox.style.width="35.5rem";
+innerDiv2_solution_links_editBox.style.fontFamily="sans-sarif";
+innerDiv2_solution_links_editBox.style.overflowY="scroll";
+innerDiv2_solution_links_editBox.style.fontSize="15px";
+innerDiv2_solution_links_editBox.style.marginTop="6px";
+
+
+     
+
+ 
+innerDiv2_solution_links_editlinks.onclick=()=>{
+ innerDiv2_solution_links.appendChild(innerDiv2_solution_links_BoxClicked_save);
+
+ innerDiv2_solution_links_BoxClicked_save.innerHTML=`Save`;
+ innerDiv2_solution_links_BoxClicked_save.style.display="block";
+ innerDiv2_solution_links_BoxClicked_save.style.padding="3px";
+innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
+innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
+innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
+innerDiv2_solution_links_BoxClicked_save.style.borderRadius="7px";
+innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+
+
+innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
+ let val= innerDiv2_solution_links_editBox.value;
+ data.solutionLinks=(val);
+fetchData();
+}
+
+
+ innerDiv2_solution_links_showBox.style.display="none";
+ innerDiv2_solution_links_addBox.style.display="none";
+    if(innerDiv2_solution_links_editBox.style.display=="none"){
+        innerDiv2_solution_links_editBox.style.display="block";
+        innerDiv2_solution_links_BoxClicked_save.style.display="block";
+
+    }else{
+        innerDiv2_solution_links_editBox.style.display="none";
+        innerDiv2_solution_links_BoxClicked_save.style.display="none";
+    }
+}
 
 
    //images
@@ -492,10 +657,11 @@ fetchData();
    //images
         innerDiv2_solution.appendChild(innerDiv2_solution_images);
         innerDiv2_solution_images.innerHTML="Images"
-        innerDiv2_solution_images.style.border=`2px solid ${color}`
+        innerDiv2_solution_images.style.border=`2px solid ${data.color}`
         innerDiv2_solution_images.style.marginTop="1rem"
         innerDiv2_solution_images.style.fontSize="x-large"
-        innerDiv2_solution_images.style.height="2rem";
+        // innerDiv2_solution_images.style.height="2rem";
+        innerDiv2_solution_images.style.paddingBottom="7px";
 
          const innerDiv2_solution_images_showImages=document.createElement("div");
         const innerDiv2_solution_images_addImages=document.createElement("div");
@@ -517,7 +683,9 @@ fetchData();
    innerDiv2_solution_images_addImages.style.width="3rem";
    innerDiv2_solution_images_addImages.style.marginLeft="29.3rem";
    innerDiv2_solution_images_addImages.style.fontSize="15px";
-   innerDiv2_solution_images_addImages.style.marginTop="-21px";
+   innerDiv2_solution_images_addImages.style.marginTop="-18.6px";
+   innerDiv2_solution_images_addImages.style.cursor="pointer";
+
 
    
 
@@ -527,7 +695,145 @@ fetchData();
    innerDiv2_solution_images_editImages.style.width="3rem";
    innerDiv2_solution_images_editImages.style.marginLeft="32.8rem";
    innerDiv2_solution_images_editImages.style.fontSize="15px";
-   innerDiv2_solution_images_editImages.style.marginTop="-19px";
+   innerDiv2_solution_images_editImages.style.marginTop="-18.6px";
+   innerDiv2_solution_images_editImages.style.cursor="pointer";
+
+
+   // Box Clicked
+// Box Clicked
+// Box Clicked
+
+const innerDiv2_solution_images_BoxClicked_save = document.createElement("div");
+
+// Show box of images
+// Show box of images
+const innerDiv2_solution_images_showBox = document.createElement("div");
+innerDiv2_solution_images.appendChild(innerDiv2_solution_images_showBox);
+innerDiv2_solution_images_showBox.innerHTML = `${data.solutionImages}`;
+innerDiv2_solution_images_showBox.style.border = "2px solid";
+innerDiv2_solution_images_showBox.style.height = "9rem";
+innerDiv2_solution_images_showBox.style.overflowY = "scroll";
+innerDiv2_solution_images_showBox.style.fontSize = "15px";
+innerDiv2_solution_images_showBox.style.fontFamily="sans-serif";
+innerDiv2_solution_images_showBox.style.marginTop = "6px";
+
+innerDiv2_solution_images_showBox.style.display = "none";
+
+innerDiv2_solution_images_showImages.onclick = () => {
+    innerDiv2_solution_images.appendChild(innerDiv2_solution_images_BoxClicked_save);
+
+    innerDiv2_solution_images_BoxClicked_save.innerHTML = "Close";
+    innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_images_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_images_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_images_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_images_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_images_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_images_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_images_BoxClicked_save.onclick = () => {
+        innerDiv2_solution_images_showBox.style.display = "none";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "none";
+    }
+
+    innerDiv2_solution_images_addBox.style.display = "none";
+    innerDiv2_solution_images_editBox.style.display = "none";
+    if (innerDiv2_solution_images_showBox.style.display == "none") {
+        innerDiv2_solution_images_showBox.style.display = "block";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_images_showBox.style.display = "none";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "none";
+    }
+}
+
+// Add box of images
+// Add box of images
+
+const innerDiv2_solution_images_addBox = document.createElement("textarea");
+innerDiv2_solution_images.appendChild(innerDiv2_solution_images_addBox);
+
+innerDiv2_solution_images_addBox.style.border = "2px solid ";
+innerDiv2_solution_images_addBox.style.height = "9rem";
+innerDiv2_solution_images_addBox.style.width = "35.5rem";
+innerDiv2_solution_images_addBox.style.fontFamily = "sans-serif";
+innerDiv2_solution_images_addBox.style.display = "none";
+innerDiv2_solution_images_addBox.style.overflowY = "scroll";
+innerDiv2_solution_images_addBox.style.fontSize = "15px";
+innerDiv2_solution_images_addBox.style.marginTop = "6px";
+
+innerDiv2_solution_images_addImages.onclick = () => {
+    innerDiv2_solution_images.appendChild(innerDiv2_solution_images_BoxClicked_save);
+
+    innerDiv2_solution_images_BoxClicked_save.innerHTML = "Save";
+    innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_images_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_images_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_images_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_images_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_images_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_images_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_images_BoxClicked_save.onclick = () => {
+        let val = innerDiv2_solution_images_addBox.value;
+        data.solutionImages = val;
+        fetchData();
+    }
+    innerDiv2_solution_images_showBox.style.display = "none";
+    innerDiv2_solution_images_editBox.style.display = "none";
+
+    if (innerDiv2_solution_images_addBox.style.display == "none") {
+        innerDiv2_solution_images_addBox.style.display = "block";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_images_addBox.style.display = "none";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "none";
+    }
+}
+
+// Edit box of images
+// Edit box of images
+const innerDiv2_solution_images_editBox = document.createElement("textarea");
+innerDiv2_solution_images.appendChild(innerDiv2_solution_images_editBox);
+innerDiv2_solution_images_editBox.innerHTML = `${data.solutionImages}`;
+innerDiv2_solution_images_editBox.style.border = "2px solid";
+innerDiv2_solution_images_editBox.style.height = "9rem";
+innerDiv2_solution_images_editBox.style.display = "none";
+innerDiv2_solution_images_editBox.style.width = "35.5rem";
+innerDiv2_solution_images_editBox.style.fontFamily = "sans-serif";
+innerDiv2_solution_images_editBox.style.overflowY = "scroll";
+innerDiv2_solution_images_editBox.style.fontSize = "15px";
+innerDiv2_solution_images_editBox.style.marginTop = "6px";
+
+innerDiv2_solution_images_editImages.onclick = () => {
+    innerDiv2_solution_images.appendChild(innerDiv2_solution_images_BoxClicked_save);
+
+    innerDiv2_solution_images_BoxClicked_save.innerHTML = "Save";
+    innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_images_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_images_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_images_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_images_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_images_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_images_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_images_BoxClicked_save.onclick = () => {
+        let val = innerDiv2_solution_images_editBox.value;
+        data.solutionImages = val;
+        fetchData();
+    }
+
+    innerDiv2_solution_images_showBox.style.display = "none";
+    innerDiv2_solution_images_addBox.style.display = "none";
+
+    if (innerDiv2_solution_images_editBox.style.display == "none") {
+        innerDiv2_solution_images_editBox.style.display = "block";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_images_editBox.style.display = "none";
+        innerDiv2_solution_images_BoxClicked_save.style.display = "none";
+    }
+}
 
 
 
@@ -544,10 +850,11 @@ fetchData();
 
         innerDiv2_solution.appendChild(innerDiv2_solution_video);
         innerDiv2_solution_video.innerHTML="Video"
-        innerDiv2_solution_video.style.border=`2px solid ${color}`
+        innerDiv2_solution_video.style.border=`2px solid ${data.color}`
         innerDiv2_solution_video.style.marginTop="1rem"
         innerDiv2_solution_video.style.fontSize="x-large"
-        innerDiv2_solution_video.style.height="2rem";
+        // innerDiv2_solution_video.style.height="2rem";
+        innerDiv2_solution_video.style.paddingBottom="7px";
         const innerDiv2_solution_video_showVideo = document.createElement("div");
         const innerDiv2_solution_video_addVideo=document.createElement("div");
         const innerDiv2_solution_video_editVideo = document.createElement("div");
@@ -569,7 +876,8 @@ fetchData();
    innerDiv2_solution_video_addVideo.style.width="3rem";
    innerDiv2_solution_video_addVideo.style.marginLeft="29.3rem";
    innerDiv2_solution_video_addVideo.style.fontSize="15px";
-   innerDiv2_solution_video_addVideo.style.marginTop="-21px";
+   innerDiv2_solution_video_addVideo.style.marginTop="-18.6px";
+   innerDiv2_solution_video_addVideo.style.cursor="pointer";
 
    
 
@@ -579,8 +887,145 @@ fetchData();
    innerDiv2_solution_video_editVideo.style.width="3rem";
    innerDiv2_solution_video_editVideo.style.marginLeft="32.8rem";
    innerDiv2_solution_video_editVideo.style.fontSize="15px";
-   innerDiv2_solution_video_editVideo.style.marginTop="-19px";
+   innerDiv2_solution_video_editVideo.style.marginTop="-18.6px";
+   innerDiv2_solution_video_editVideo.style.cursor="pointer";
 
+// Box Clicked
+// Box Clicked
+// Box Clicked
+
+const innerDiv2_solution_video_BoxClicked_save = document.createElement("div");
+
+// Show box of videos
+// Show box of videos
+const innerDiv2_solution_video_showBox = document.createElement("div");
+innerDiv2_solution_video.appendChild(innerDiv2_solution_video_showBox);
+innerDiv2_solution_video_showBox.innerHTML = `${data.solutionVideos}`;
+innerDiv2_solution_video_showBox.style.border = "2px solid";
+innerDiv2_solution_video_showBox.style.height = "9rem";
+innerDiv2_solution_video_showBox.style.overflowY = "scroll";
+innerDiv2_solution_video_showBox.style.fontFamily = "sans-serif";
+
+innerDiv2_solution_video_showBox.style.fontSize = "15px";
+innerDiv2_solution_video_showBox.style.marginTop = "6px";
+
+innerDiv2_solution_video_showBox.style.display = "none";
+
+innerDiv2_solution_video_showVideo.onclick = () => {
+    innerDiv2_solution_video.appendChild(innerDiv2_solution_video_BoxClicked_save);
+
+    innerDiv2_solution_video_BoxClicked_save.innerHTML = "Close";
+    innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_video_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_video_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_video_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_video_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_video_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_video_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_video_BoxClicked_save.onclick = () => {
+        innerDiv2_solution_video_showBox.style.display = "none";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "none";
+    }
+
+    innerDiv2_solution_video_addBox.style.display = "none";
+    innerDiv2_solution_video_editBox.style.display = "none";
+    if (innerDiv2_solution_video_showBox.style.display == "none") {
+        innerDiv2_solution_video_showBox.style.display = "block";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_video_showBox.style.display = "none";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "none";
+    }
+}
+
+// Add box of videos
+// Add box of videos
+
+const innerDiv2_solution_video_addBox = document.createElement("textarea");
+innerDiv2_solution_video.appendChild(innerDiv2_solution_video_addBox);
+
+innerDiv2_solution_video_addBox.style.border = "2px solid ";
+innerDiv2_solution_video_addBox.style.height = "9rem";
+innerDiv2_solution_video_addBox.style.width = "35.5rem";
+innerDiv2_solution_video_addBox.style.fontFamily = "sans-serif";
+innerDiv2_solution_video_addBox.style.display = "none";
+innerDiv2_solution_video_addBox.style.overflowY = "scroll";
+innerDiv2_solution_video_addBox.style.fontSize = "15px";
+innerDiv2_solution_video_addBox.style.marginTop = "6px";
+
+innerDiv2_solution_video_addVideo.onclick = () => {
+    innerDiv2_solution_video.appendChild(innerDiv2_solution_video_BoxClicked_save);
+
+    innerDiv2_solution_video_BoxClicked_save.innerHTML = "Save";
+    innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_video_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_video_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_video_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_video_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_video_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_video_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_video_BoxClicked_save.onclick = () => {
+        let val = innerDiv2_solution_video_addBox.value;
+        data.solutionVideos = val;
+        fetchData();
+    }
+    innerDiv2_solution_video_showBox.style.display = "none";
+    innerDiv2_solution_video_editBox.style.display = "none";
+
+    if (innerDiv2_solution_video_addBox.style.display == "none") {
+        innerDiv2_solution_video_addBox.style.display = "block";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_video_addBox.style.display = "none";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "none";
+    }
+}
+
+// Edit box of videos
+// Edit box of videos
+const innerDiv2_solution_video_editBox = document.createElement("textarea");
+innerDiv2_solution_video.appendChild(innerDiv2_solution_video_editBox);
+innerDiv2_solution_video_editBox.innerHTML = `${data.solutionVideos}`;
+innerDiv2_solution_video_editBox.style.border = "2px solid";
+innerDiv2_solution_video_editBox.style.height = "9rem";
+innerDiv2_solution_video_editBox.style.display = "none";
+innerDiv2_solution_video_editBox.style.width = "35.5rem";
+innerDiv2_solution_video_editBox.style.fontFamily = "sans-serif";
+innerDiv2_solution_video_editBox.style.overflowY = "scroll";
+innerDiv2_solution_video_editBox.style.fontSize = "15px";
+innerDiv2_solution_video_editBox.style.marginTop = "6px";
+
+innerDiv2_solution_video_editVideo.onclick = () => {
+    innerDiv2_solution_video.appendChild(innerDiv2_solution_video_BoxClicked_save);
+
+    innerDiv2_solution_video_BoxClicked_save.innerHTML = "Save";
+    innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    innerDiv2_solution_video_BoxClicked_save.style.padding = "3px";
+    innerDiv2_solution_video_BoxClicked_save.style.fontSize = "15px";
+    innerDiv2_solution_video_BoxClicked_save.style.width = "3rem";
+    innerDiv2_solution_video_BoxClicked_save.style.border = "1px solid";
+    innerDiv2_solution_video_BoxClicked_save.style.borderRadius = "7px";
+    innerDiv2_solution_video_BoxClicked_save.style.cursor = "pointer";
+
+    innerDiv2_solution_video_BoxClicked_save.onclick = () => {
+        let val = innerDiv2_solution_video_editBox.value;
+        data.solutionVideos = val;
+        fetchData();
+    }
+
+    innerDiv2_solution_video_showBox.style.display = "none";
+    innerDiv2_solution_video_addBox.style.display = "none";
+
+    if (innerDiv2_solution_video_editBox.style.display == "none") {
+        innerDiv2_solution_video_editBox.style.display = "block";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "block";
+    } else {
+        innerDiv2_solution_video_editBox.style.display = "none";
+        innerDiv2_solution_video_BoxClicked_save.style.display = "none";
+    }
+}
 
 
 
@@ -602,25 +1047,16 @@ add_query_form.onsubmit=(e)=>{
    
     const obj={
         groupNo:group===1?"A":group===2?"B":"",
-        nameOfStudent:e.target.add_student_left_form_input_studentName_name.value,
+        nameOfStudent:e.target.add_student_left_form_input_studentName_name.value,  
         titleOfDoubt:e.target.add_student_left_form_input_doubtTitle_name.value,
         preferences:prefer==1?"urgent":prefer==2?"research-required":prefer==0?"":"to-do",
         query:e.target.add_query_container_rightPart_queryBoxTextarea_name.value,
         tags:e.target.add_query_container_rightPart_tagsTitle_name.value,
         solutionGeneral:"general solution",
-        solutionLinks:[
-            "first link",
-            "second link",
-        ],
-        solutionImages:[
-               "first image",
-               "second image"
-        ],
-        solutionVideo:[
-            "first video",
-            "second video"
-        ]
-
+        solutionLinks:"first link",
+        solutionImages: "first image",
+        solutionVideos:"first video",
+        color:"black",
     }
     // console.log(add_student_form_input_studentName)
 
