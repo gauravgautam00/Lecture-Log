@@ -1,6 +1,10 @@
-const arr=[];
+
+
+const main_container_queryAdd_button =document.getElementById("main_container_queryAdd_button");
+const main_container_queryView_button =document.getElementById("main_container_queryView_button");
+
 const main_data_container = document.getElementById("stored_data_container");
-// <!-- //470 right -->
+
 const add_query_form = document.getElementById("add_query_form");
 const add_student_form_input_studentName = document.getElementById("add_student_form_input_studentName");
 const add_student_form_input_doubtTitle = document.getElementById("add_student_form_input_doubt");
@@ -15,32 +19,120 @@ const add_Student_left_form_preferences_red=document.getElementById("add_Student
 const add_Student_left_form_preferences_yellow=document.getElementById("add_Student_left_form_preferences_yellow");
 const add_Student_left_form_preferences_blue=document.getElementById("add_Student_left_form_preferences_blue");
 
-const main_container_queryAdd_button =document.getElementById("main_container_queryAdd_button");
-const main_container_queryView_button =document.getElementById("main_container_queryView_button");
+//filters
+const stored_container_filter_preferences=document.getElementById("stored_container_filter_preferences");
+const stored_container_filter_group = document.getElementById("stored_container_filter_group");
+const stored_container_filter_preferences_magicBox=document.getElementById("stored_container_filter_preferences_magicBox");
+const stored_container_filter_group_magicBox=document.getElementById("stored_container_filter_group_magicBox");
+const stored_container_filter_search=document.getElementById("stored_container_filter_search");
+const stored_container_filter_reset=document.getElementById("stored_container_filter_reset");
+const stored_container_filter_preferences_magicBox_child1=document.getElementById("stored_container_filter_preferences_magicBox_child1");
+const stored_container_filter_preferences_magicBox_child2=document.getElementById("stored_container_filter_preferences_magicBox_child2");
+const stored_container_filter_preferences_magicBox_child3=document.getElementById("stored_container_filter_preferences_magicBox_child3");
+const stored_container_filter_preferences_magicBox_child4=document.getElementById("stored_container_filter_preferences_magicBox_child4");
+const stored_container_filter_preferences_magicBox_child5=document.getElementById("stored_container_filter_preferences_magicBox_child5");
+const stored_container_filter_group_magicBox_A=document.getElementById("stored_container_filter_group_magicBox_A");
+const stored_container_filter_group_magicBox_B=document.getElementById("stored_container_filter_group_magicBox_B");
+const stored_container_filter_studentName_input=document.getElementById("stored_container_filter_studentName_input");
 
-const lll=document.getElementById("lll");
+let filter_nameToSearch="";
+let filter_preferencesToSearch="";
+let filter_groupToSearch="";
 
+stored_container_filter_preferences.onclick=()=>{
+    stored_container_filter_group_magicBox.style.display="none";
 
+    
+    if(stored_container_filter_preferences_magicBox.style.display=="none"){
+        stored_container_filter_preferences_magicBox.style.display="block";
 
-
-let group=0;
-let prefer=0;
-
-add_student_left_form_groupA.onclick=()=>{
-    group=1;
+    }else{
+        stored_container_filter_preferences_magicBox.style.display="none";
+    }
 }
-add_student_left_form_groupB.onclick=()=>{
-    group=2;
+stored_container_filter_group.onclick=()=>{
+    stored_container_filter_preferences_magicBox.style.display="none";
+
+   
+    if(stored_container_filter_group_magicBox.style.display=="none"){
+        stored_container_filter_group_magicBox.style.display="block";
+
+    }else{
+        stored_container_filter_group_magicBox.style.display="none";
+    }
 }
-add_Student_left_form_preferences_red.onclick=()=>{
-    prefer=1;
+
+
+
+stored_container_filter_preferences_magicBox_child1.onclick=()=>{
+    filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child1.innerText;
 }
-add_Student_left_form_preferences_yellow.onclick=()=>{
-prefer=2;
+stored_container_filter_preferences_magicBox_child2.onclick=()=>{
+    filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child2.innerText;
 }
-add_Student_left_form_preferences_blue.onclick=()=>{
-    prefer=3;
+stored_container_filter_preferences_magicBox_child3.onclick=()=>{
+    filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child3.innerText;
 }
+stored_container_filter_preferences_magicBox_child4.onclick=()=>{
+    filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child4.innerText;
+}
+stored_container_filter_preferences_magicBox_child5.onclick=()=>{
+    filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child5.innerText;
+}
+
+
+stored_container_filter_group_magicBox_A.onclick=()=>{
+    filter_groupToSearch="A";
+}
+stored_container_filter_group_magicBox_B.onclick=()=>{
+    filter_groupToSearch="B";
+}
+
+
+stored_container_filter_studentName_input.onclick=()=>{
+    filter_nameToSearch=stored_container_filter_studentName_input.value;
+
+}
+
+
+
+stored_container_filter_search.onclick=()=>{
+
+    console.log(filter_nameToSearch , filter_preferencesToSearch , filter_groupToSearch)
+    const arr=JSON.parse(localStorage.getItem('data'));
+    let filteredArr=arr;
+
+    if(filter_nameToSearch!=""){
+    filteredArr=filteredArr.filter((item)=>item.nameOfStudent==filter_nameToSearch);
+}
+
+
+    if(filter_groupToSearch!=""){
+    filteredArr=filteredArr.filter((item)=>{
+
+    
+    return (
+           item.groupNo==filter_groupToSearch
+    
+)
+});}
+
+    if(filter_preferencesToSearch!=""){
+        filter_preferencesToSearch= filter_preferencesToSearch.toLowerCase();
+        // console.log(filter_preferencesToSearch)
+    filteredArr=filteredArr.filter((item)=>item.preferences==filter_preferencesToSearch);
+    }
+
+fetchData(filteredArr);
+
+}
+stored_container_filter_reset.onclick=()=>{
+    const arr=JSON.parse(localStorage.getItem('data'));
+    fetchData(arr);
+    console.log("entered reset")
+}
+
+
 
 
 
@@ -59,15 +151,67 @@ main_container_queryView_button.onclick=(e)=>{
     });
 }
 
+let group=0;
+let prefer=0;
+
+add_student_left_form_groupA.onclick=()=>{
+    group=1;
+    add_student_left_form_groupA.style.backgroundColor="blue";
+    add_student_left_form_groupA.style.color="white";
+    add_student_left_form_groupB.style.backgroundColor="white";
+    add_student_left_form_groupB.style.color="black";
+
+}
+add_student_left_form_groupB.onclick=()=>{
+    group=2;
+    add_student_left_form_groupB.style.backgroundColor="blue";
+    add_student_left_form_groupB.style.color="white";
+    add_student_left_form_groupA.style.backgroundColor="white";
+    add_student_left_form_groupA.style.color="black";
+}
+add_Student_left_form_preferences_red.onclick=()=>{
+    add_Student_left_form_preferences_red.style.backgroundColor="red";
+    add_Student_left_form_preferences_red.style.color="white";
+    add_Student_left_form_preferences_yellow.style.backgroundColor="white";
+    add_Student_left_form_preferences_blue.style.backgroundColor="white";
+    add_Student_left_form_preferences_blue.style.color="black";
+    prefer=1;
+}
+add_Student_left_form_preferences_yellow.onclick=()=>{
+prefer=2;
+add_Student_left_form_preferences_red.style.backgroundColor="white";
+    add_Student_left_form_preferences_red.style.color="black";
+
+    add_Student_left_form_preferences_yellow.style.backgroundColor="#f8b800";
+    // add_Student_left_form_preferences_yellow.style.color=" ";
+    add_Student_left_form_preferences_blue.style.backgroundColor="white";
+    add_Student_left_form_preferences_blue.style.color="black";
+}
+add_Student_left_form_preferences_blue.onclick=()=>{
+    prefer=3;
+    add_Student_left_form_preferences_red.style.backgroundColor="white";
+    add_Student_left_form_preferences_red.style.color="blackS";
+    add_Student_left_form_preferences_yellow.style.backgroundColor="white";
+    add_Student_left_form_preferences_blue.style.backgroundColor="blue";
+    add_Student_left_form_preferences_blue.style.color="white";
+
+
+}
 
 
 
-const fetchData=()=>{
+
+
+
+const fetchData=(arr)=>{
+
+
+    
     main_data_container.innerHTML="";  
     arr.map((data,index)=>{
         const div = document.createElement("div");
        if(data.color=="black"){ let colorm=data.preferences==="urgent"?"red":(data.preferences=="research-required"?"#f8b800":"blue");
-        console.log(data.preferences)
+        
 if(data.preferences===""){
     colorm="black"
 }
@@ -121,10 +265,15 @@ data.color=colorm;}
          innerDiv1_complete.style.backgroundColor = "green";
          innerDiv1_complete.style.color = "white";
          innerDiv1_complete.style.fontSize="large"
+         innerDiv1_complete.style.cursor="pointer";
 
         innerDiv1_complete.onclick=()=>{
             data.color="green";
-            fetchData();
+            localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
         }
          
 
@@ -138,10 +287,16 @@ data.color=colorm;}
          innerDiv1_progress.style.marginTop = "10px";
          innerDiv1_progress.style.backgroundColor = "teal";
          innerDiv1_progress.style.color = "white";
-         innerDiv1_progress.style.fontSize="large"
+         innerDiv1_progress.style.fontSize="large";
+         innerDiv1_progress.style.cursor="pointer";
+
          innerDiv1_progress.onclick=()=>{
             data.color="teal";
-            fetchData();
+            localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localS/torage.getItem('data'));
+   
+    fetchData(arr);
         }
 
         innerDiv1.appendChild(innerDiv1_delete);
@@ -156,6 +311,17 @@ innerDiv1_delete.style.marginLeft = "69rem";
 innerDiv1_delete.style.textAlign = "center";
 innerDiv1_delete.style.backgroundColor="red";
 innerDiv1_delete.style.color="white";
+innerDiv1_delete.style.cursor="pointer";
+
+innerDiv1_delete.onclick=()=>{
+   
+    arr.splice(index,1);
+    localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
+}
 
 
 
@@ -187,39 +353,73 @@ const innerDiv2_solution = document.createElement("div");
          innerDiv2.appendChild(innerDiv2_query);
          innerDiv2_query.innerHTML = `
          <span style="font-size: x-large">Query - </span>
-         <textarea readonly style="text-overflow: ellipsis;
-           width: 98%;
-           resize: none;
-           appearance: none;
-           outline: none;
-           box-shadow: none;
-           height: 76%;
-           border: none;
-           margin-top:10px;
-           margin-bottom:5px;   ">${data.query}</textarea>
-           <div style="
-           margin-left: 1px;
-    border-radius: 4px;
-    padding: 3px;
-    text-align: center;
-    font-size: larger;
-    border: 2px solid;
-    width: 7rem;
-    margin-top: 0rem;
-">Edit query</div>
+         
        `;
+       const innerDiv2_textarea = document.createElement('textarea');
+       innerDiv2_query.appendChild(innerDiv2_textarea);
+innerDiv2_textarea.setAttribute('readonly', 'true');
+innerDiv2_textarea.style.textOverflow = 'ellipsis';
+innerDiv2_textarea.style.width = '98%';
+innerDiv2_textarea.style.resize = 'none';
+innerDiv2_textarea.style.appearance = 'none';
+innerDiv2_textarea.style.outline = 'none';
+innerDiv2_textarea.style.boxShadow = 'none';
+innerDiv2_textarea.style.height = '76%';
+// innerDiv2_textarea.style.border = 'none';
+innerDiv2_textarea.style.marginTop = '10px';
+innerDiv2_textarea.style.marginBottom = '5px';
+innerDiv2_textarea.textContent = data.query; 
 
-        
+
+       const innerDiv2_editQuery=document.createElement("div");
+       innerDiv2_editQuery.innerHTML="Edit Query"
+       innerDiv2_editQuery.style.marginLeft = '1px';
+       innerDiv2_editQuery.style.borderRadius = '4px';
+       innerDiv2_editQuery.style.padding = '3px';
+       innerDiv2_editQuery.style.textAlign = 'center';
+       innerDiv2_editQuery.style.fontSize = 'larger';
+       innerDiv2_editQuery.style.border = '2px solid';
+       innerDiv2_editQuery.style.width = '7rem';
+       innerDiv2_editQuery.style.marginTop = '0rem';
+       innerDiv2_editQuery.style.cursor="pointer";
+
+
+        innerDiv2_query.appendChild(innerDiv2_editQuery);
         //  innerDiv2_query.style.marginTop="1rem";
         innerDiv2_query.style.width="31rem";
          innerDiv2_query.style.height="21rem";
          innerDiv2_query.style.marginTop="1rem"
          innerDiv2_query.style.border="2px solid black"
 
-         
+         innerDiv2_editQuery.onclick=()=>{
+            innerDiv2_textarea.removeAttribute('readonly');
+            
+            const innerDiv2_saveQuery=document.createElement("div");
+            innerDiv2_query.appendChild(innerDiv2_saveQuery);
+               innerDiv2_saveQuery.innerHTML="Save Query"
+       innerDiv2_saveQuery.style.marginLeft = '8rem';
+       innerDiv2_saveQuery.style.borderRadius = '4px';
+       innerDiv2_saveQuery.style.padding = '3px';
+       innerDiv2_saveQuery.style.textAlign = 'center';
+       innerDiv2_saveQuery.style.fontSize = 'larger';
+       innerDiv2_saveQuery.style.border = '2px solid';
+       innerDiv2_saveQuery.style.width = '7rem';
+       innerDiv2_saveQuery.style.marginTop = '-2rem';
+       innerDiv2_saveQuery.style.cursor="pointer"
+
+
+       innerDiv2_saveQuery.onclick=()=>{
+        data.query= innerDiv2_textarea.value;
+        localStorage.clear();
+        localStorage.setItem('data',JSON.stringify(arr));
+        // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
+       }
+         }
 
          //solution
-         //solution
+         //solution2
          //solution
         innerDiv2.appendChild(innerDiv2_solution);
         innerDiv2_solution.innerHTML=`<div style="height: 2rem;
@@ -331,6 +531,8 @@ const innerDiv2_solution = document.createElement("div");
    innerDiv2_solution_general_BoxClicked_save.style.width="3rem";
    innerDiv2_solution_general_BoxClicked_save.style.border="1px solid";
    innerDiv2_solution_general_BoxClicked_save.style.borderRadius="7px";
+   innerDiv2_solution_general_BoxClicked_save.style.cursor="pointer";
+
 
    innerDiv2_solution_general_BoxClicked_save.onclick=()=>{
     innerDiv2_solution_general_showBox.style.display="none";
@@ -375,12 +577,18 @@ const innerDiv2_solution = document.createElement("div");
    innerDiv2_solution_general_BoxClicked_save.style.fontSize="15px";
    innerDiv2_solution_general_BoxClicked_save.style.width="3rem";
    innerDiv2_solution_general_BoxClicked_save.style.border="1px solid";
+   innerDiv2_solution_general_BoxClicked_save.style.cursor="pointer";
+
    innerDiv2_solution_general_BoxClicked_save.style.borderRadius="7px";
 
    innerDiv2_solution_general_BoxClicked_save.onclick=()=>{
     let val= innerDiv2_solution_general_addBox.value;
     data.solutionGeneral=val;
-fetchData();
+    localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
    }
     innerDiv2_solution_general_showBox.style.display="none";
     innerDiv2_solution_general_editBox.style.display="none";
@@ -420,11 +628,17 @@ fetchData();
    innerDiv2_solution_general_BoxClicked_save.style.width="3rem";
    innerDiv2_solution_general_BoxClicked_save.style.border="1px solid";
    innerDiv2_solution_general_BoxClicked_save.style.borderRadius="7px";
+   innerDiv2_solution_general_BoxClicked_save.style.cursor="pointer";
+
    
    innerDiv2_solution_general_BoxClicked_save.onclick=()=>{
     let val= innerDiv2_solution_general_editBox.value;
     data.solutionGeneral=val;
-fetchData();
+    localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
    }
 
 
@@ -529,7 +743,7 @@ innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
 innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
 innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
 innerDiv2_solution_links_BoxClicked_save.style.borderRadius=="7px";
-innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+innerDiv2_solution_links_BoxClicked_save.style.cursor="pointer";
 
 
 innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
@@ -578,13 +792,17 @@ innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
 innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
 innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
 innerDiv2_solution_links_BoxClicked_save.style.borderRadius="7px";
-innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+innerDiv2_solution_links_BoxClicked_save.style.cursor="pointer";
 
 
 innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
  let val= innerDiv2_solution_links_addBox.value;
  data.solutionLinks=(val);
-fetchData();
+ localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    const arr=JSON.parse(localStorage.getItem('data'));
+   
+    fetchData(arr);
 }
  innerDiv2_solution_links_showBox.style.display="none";
  innerDiv2_solution_links_editBox.style.display="none";
@@ -626,13 +844,17 @@ innerDiv2_solution_links_BoxClicked_save.style.fontSize="15px";
 innerDiv2_solution_links_BoxClicked_save.style.width="3rem";
 innerDiv2_solution_links_BoxClicked_save.style.border="1px solid";
 innerDiv2_solution_links_BoxClicked_save.style.borderRadius="7px";
-innerDiv2_solution_links_BoxClicked_save.style.cursor=="pointer";
+innerDiv2_solution_links_BoxClicked_save.style.cursor="pointer";
 
 
 innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
  let val= innerDiv2_solution_links_editBox.value;
  data.solutionLinks=(val);
-fetchData();
+ localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
 }
 
 
@@ -777,7 +999,11 @@ innerDiv2_solution_images_addImages.onclick = () => {
     innerDiv2_solution_images_BoxClicked_save.onclick = () => {
         let val = innerDiv2_solution_images_addBox.value;
         data.solutionImages = val;
-        fetchData();
+        localStorage.clear();
+        localStorage.setItem('data',JSON.stringify(arr));
+        // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
     }
     innerDiv2_solution_images_showBox.style.display = "none";
     innerDiv2_solution_images_editBox.style.display = "none";
@@ -820,7 +1046,11 @@ innerDiv2_solution_images_editImages.onclick = () => {
     innerDiv2_solution_images_BoxClicked_save.onclick = () => {
         let val = innerDiv2_solution_images_editBox.value;
         data.solutionImages = val;
-        fetchData();
+        localStorage.clear();
+    localStorage.setItem('data',JSON.stringify(arr));
+    // const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
     }
 
     innerDiv2_solution_images_showBox.style.display = "none";
@@ -969,6 +1199,8 @@ innerDiv2_solution_video_addVideo.onclick = () => {
     innerDiv2_solution_video_BoxClicked_save.onclick = () => {
         let val = innerDiv2_solution_video_addBox.value;
         data.solutionVideos = val;
+        localStorage.clear();
+        localStorage.setItem('data',JSON.stringify(arr));
         fetchData();
     }
     innerDiv2_solution_video_showBox.style.display = "none";
@@ -1012,6 +1244,8 @@ innerDiv2_solution_video_editVideo.onclick = () => {
     innerDiv2_solution_video_BoxClicked_save.onclick = () => {
         let val = innerDiv2_solution_video_editBox.value;
         data.solutionVideos = val;
+        localStorage.clear();
+        localStorage.setItem('data',JSON.stringify(arr));
         fetchData();
     }
 
@@ -1042,37 +1276,47 @@ innerDiv2_solution_video_editVideo.onclick = () => {
 }
 add_query_form.onsubmit=(e)=>{
     // console.log(e);
-    console.log("ll");
+   
     e.preventDefault();
    
     const obj={
         groupNo:group===1?"A":group===2?"B":"",
-        nameOfStudent:e.target.add_student_left_form_input_studentName_name.value,  
-        titleOfDoubt:e.target.add_student_left_form_input_doubtTitle_name.value,
+        nameOfStudent:e.target.add_student_left_form_input_studentName_name.value==""?"Student":e.target.add_student_left_form_input_studentName_name.value,  
+        titleOfDoubt:e.target.add_student_left_form_input_doubtTitle_name.value==""?"Title of query":e.target.add_student_left_form_input_doubtTitle_name.value,
         preferences:prefer==1?"urgent":prefer==2?"research-required":prefer==0?"":"to-do",
-        query:e.target.add_query_container_rightPart_queryBoxTextarea_name.value,
-        tags:e.target.add_query_container_rightPart_tagsTitle_name.value,
-        solutionGeneral:"general solution",
-        solutionLinks:"first link",
-        solutionImages: "first image",
-        solutionVideos:"first video",
+        query:e.target.add_query_container_rightPart_queryBoxTextarea_name.value==""?"NULL":e.target.add_query_container_rightPart_queryBoxTextarea_name.value,
+        tags:e.target.add_query_container_rightPart_tagsTitle_name.value==""?"NULL":e.target.add_query_container_rightPart_tagsTitle_name.value,
+        solutionGeneral:"",
+        solutionLinks:"",
+        solutionImages: "",
+        solutionVideos:"",
         color:"black",
     }
-    // console.log(add_student_form_input_studentName)
-
-    arr.push(obj);
-    console.log(arr);
+    // localStorage.clear();
+    const cur_Data=localStorage.getItem('data');
    
-fetchData();
+    if(!cur_Data){
+        const cur=[(obj)];
+        localStorage.setItem('data',JSON.stringify(cur));
+        const cur_Data=localStorage.getItem('data');
+    
+    }else{
+   const cur=JSON.parse(localStorage.getItem('data'));
+   cur.push(obj);
+localStorage.setItem('data',JSON.stringify(cur));
+    }
+   
+    const arr=JSON.parse(localStorage.getItem('data'));
+   
+fetchData(arr);
 
     }
 
 
-//edit query
-//edit query//edit query
-   //edit query
-//edit query
 
-const editQuery=(value , index)=>{
-console.log("value" , value , "index" , index);
+
+
+window.onload=()=>{
+    const arr=JSON.parse(localStorage.getItem('data'));
+    fetchData(arr);    
 }

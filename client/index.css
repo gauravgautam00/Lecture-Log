@@ -187,7 +187,7 @@ margin-top:2rem;
     overflow-y:scroll;
 }
 #add_student_left_form_groupA{
-    border: 2px solid red;
+    border: 2px solid blue;
     width: 10rem;
     margin-left: 2.5rem;
     margin-top: 2rem;
@@ -195,7 +195,7 @@ margin-top:2rem;
     cursor: pointer;
 }
 #add_student_left_form_groupB{
-    border: 2px solid red;
+    border: 2px solid blue;
     margin-left: 18.6rem;
     padding: 16px;
     margin-top: -3.4rem;
@@ -243,6 +243,7 @@ margin-top:2rem;
     border: 2px solid red;
     margin-left: 2.5rem;
     margin-top: 13px;
+    cursor: pointer;
 }
 #add_Student_left_form_preferences_yellow{
     height: 1.7rem;
@@ -250,6 +251,7 @@ margin-top:2rem;
     border: 2px solid #f8b800;
     margin-left: 2.5rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 #add_Student_left_form_preferences_blue{
     height: 1.7rem;
@@ -257,6 +259,7 @@ margin-top:2rem;
     border: 2px solid blue;
     margin-left: 2.4rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 
@@ -302,6 +305,8 @@ margin-top:2rem;
     width: 537px;
     height: 253px;
     border-radius: 7px;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 #add_query_container_rightPart_tagsTitle{
     margin-left: 2rem;
@@ -352,8 +357,128 @@ margin-top:2rem;
     margin-top: 3rem;
     font-size: xx-large;
 }
+#stored_container_filter{
+    height:2rem;
+    display: flex;
+    padding: 10px;
+    border-top:2px solid blue;
+}
+#stored_container_filter_title{
+    text-align: center;
+    background-color: #EBF6FF;
+    width: 7rem;
+    font-size: large;
+   
+    height: 2.3rem;
+    /* border: 2px solid; */
+    border-radius: 6px;
+}
+#stored_container_filter_icon{
+    position: relative;
+   
+    top: 6px;
+    left: 7px;
+}
+#stored_container_line{
+    margin-top: -10px;
+    margin-left: 37px;
+    height: 3.2rem;
+    border: 1px solid;
+}
+#stored_container_filter_studentName{
+    margin-left:5rem;
+    margin-top:4px;
+}
+#stored_container_filter_studentName_input{
+    height: 21px;
+    width: 14rem;
+}
 
-
+#stored_container_filter_preferences{
+    font-size: large;
+    margin-top: 4px;
+    width:11rem;
+    margin-left: 4rem;
+    border:2px solid;
+    cursor: pointer;
+}
+#stored_container_filter_preferences_icon{
+    position: absolute;
+    left: 43rem;
+    font-size: x-large;
+}
+#stored_container_filter_preferences_magicBox{
+    background-color: white;
+    top: -10px;
+    width: 11.1rem;
+    border: 1px solid;
+    position: relative;
+    /* display: block; */
+    display: none;
+    left: 33.56rem;
+}
+.stored_container_filter_preferences_magicBox_class{
+    margin-top:10px;
+    font-size: large;
+    cursor:pointer;
+    border-bottom: 1px solid ;
+}
+#stored_container_filter_group{
+    font-size: large;
+    margin-top: 4px;
+    margin-left: 4rem;
+    border:2px solid;
+    width:11rem;
+    cursor: pointer;
+}
+#stored_container_filter_group_icon{
+    position: absolute;
+    left: 58rem;
+    font-size: x-large;
+}
+#stored_container_filter_group_magicBox{
+    background-color: white;
+    top: -0.7rem;
+    width: 11.1rem;
+    display: none;
+    border: 1px solid;
+    position: relative;
+    /* display: block; */
+    left: 48.8rem;
+}
+.stored_container_filter_group_magicBox_class{
+    margin-top:10px;
+    font-size: large;
+    cursor:pointer;
+    border-bottom: 1px solid ;
+}
+#stored_container_filter_search{
+    border-radius: 6px;
+    padding: 4px;
+    text-align: center;
+    font-size: large;
+    margin-top: 4px;
+    margin-left: 7rem;
+    height: 1.2rem;
+    width: 4rem;
+    border: 2px solid;
+    cursor: pointer;
+}
+#stored_container_filter_reset{
+    border-radius: 6px;
+    padding: 4px;
+    text-align: center;
+    font-size: large;
+    margin-top: 4px;
+    margin-left: 1rem;
+    height: 1.2rem;
+    width: 4rem;
+    border: 2px solid;
+    cursor: pointer;
+}
+#stored_data_container{
+    margin-top:0rem;
+}
 
 /*finished  STORED CONTAINER */
 /*finished  STORED CONTAINER */

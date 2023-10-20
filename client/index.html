@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <link rel="icon" href="../Images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Lecture_log</title>
 </head>
@@ -83,16 +87,17 @@
         Group A
     </div>
     <div id="add_student_left_form_groupB">
+
         Group B
     </div>
     <div id="add_student_left_form_studentName">Enter the Student Name</div>
-    <input name="add_student_left_form_input_studentName_name"  type="text" id="add_student_left_form_input_studentName"  placeholder="type here" autocomplete="off"
-    value="Gaurav Gautam">
+    <input name="add_student_left_form_input_studentName_name"  type="text" id="add_student_left_form_input_studentName"  placeholder="Type here" autocomplete="off"
+    >
     
     <div id="add_student_left_form_doubt">Enter the title of Doubt</div>
     <input type="text" id="add_student_left_form_input_doubtTitle"
      name="add_student_left_form_input_doubtTitle_name"
-      placeholder="type here" value="Regarding the backend stuff"></input>
+      placeholder="Enter the title  of student query" ></input>
     <!-- <input name="lll">  -->
     <div id="add_student_left_form_preferences">Select Preferences</div>
      <div id="add_Student_left_form_preferences_red">Urgent</div>
@@ -109,15 +114,15 @@
     Enter Query
 </div>
 <textarea id="add_query_container_rightPart_queryBoxTextarea" name="add_query_container_rightPart_queryBoxTextarea_name" 
->
-value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum, quam aspernatur nulla, dicta eius culpa a, aut cupiditate odio nihil praesentium dignissimos ducimus ullam fugit. Nostrum, eligendi quidem! Omnis.
+placeholder="Type here">
+
 
 </textarea>
 <div id="add_query_container_rightPart_tagsTitle" >
     Enter tags
 </div>
 <input id="add_query_container_rightPart_tagsInput" name="add_query_container_rightPart_tagsTitle_name"
-value="hacktoberfest">
+placeholder="Type here">
 </input>
 </div>
 
@@ -133,6 +138,51 @@ value="hacktoberfest">
 <!-- STORED CONTAINER -->
 <div id="stored_container_heading">Stored  Data
 
+</div>
+<div id="stored_container_filter">
+<div id="stored_container_filter_title">
+    Filter <span id="stored_container_filter_icon" class="material-symbols-outlined">
+        filter_alt
+        </span>
+</div>
+<div id="stored_container_line"></div>
+
+<div id="stored_container_filter_studentName">
+    <input type="text" id="stored_container_filter_studentName_input" name="stored_container_filter_studentName_input_name" placeholder="Enter the student name">
+</div>
+
+
+
+    <div  id="stored_container_filter_preferences"  >Select Preferences <span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+        expand_more
+        </span></div>
+    
+
+<div id="stored_container_filter_group">Select group<span id="stored_container_filter_group_icon" class="material-symbols-outlined">
+    expand_more
+    </span></div>
+
+    <div id="stored_container_filter_search">Search</div>
+
+<div id="stored_container_filter_reset">Reset</div>
+
+</div>
+
+<div id="stored_container_filter_preferences_magicBox">
+    <div class ="stored_container_filter_preferences_magicBox_class" id="stored_container_filter_preferences_magicBox_child1">Urgent</div>
+    <div  class ="stored_container_filter_preferences_magicBox_class" id="stored_container_filter_preferences_magicBox_child2">Research-Required</div>
+
+    <div  class ="stored_container_filter_preferences_magicBox_class" id="stored_container_filter_preferences_magicBox_child3">To-do</div>
+
+    <div  class ="stored_container_filter_preferences_magicBox_class" id="stored_container_filter_preferences_magicBox_child4">Completed</div>
+
+    <div  class ="stored_container_filter_preferences_magicBox_class" id="stored_container_filter_preferences_magicBox_child5">IN Progress</div>
+
+
+</div>
+<div id="stored_container_filter_group_magicBox">
+    <div class="stored_container_filter_group_magicBox_class" id="stored_container_filter_group_magicBox_A">Group A</div>
+    <div class="stored_container_filter_group_magicBox_class" id="stored_container_filter_group_magicBox_B">Group B</div>
 </div>
  <div id="stored_data_container">
   
