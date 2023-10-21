@@ -54,4 +54,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or feedback, please contact [Your Name] at [your@email.com].
+For any questions or feedback, please contact Team-Lecture-Log at Team_Lecture-Log_12@gmail.com.
