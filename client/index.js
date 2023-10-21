@@ -31,8 +31,12 @@ const stored_container_filter_preferences_magicBox_child2=document.getElementByI
 const stored_container_filter_preferences_magicBox_child3=document.getElementById("stored_container_filter_preferences_magicBox_child3");
 const stored_container_filter_preferences_magicBox_child4=document.getElementById("stored_container_filter_preferences_magicBox_child4");
 const stored_container_filter_preferences_magicBox_child5=document.getElementById("stored_container_filter_preferences_magicBox_child5");
+const stored_container_filter_preferences_magicBox_child6=document.getElementById("stored_container_filter_preferences_magicBox_child6");
+
 const stored_container_filter_group_magicBox_A=document.getElementById("stored_container_filter_group_magicBox_A");
 const stored_container_filter_group_magicBox_B=document.getElementById("stored_container_filter_group_magicBox_B");
+const stored_container_filter_group_magicBox_All=document.getElementById("stored_container_filter_group_magicBox_All");
+
 const stored_container_filter_studentName_input=document.getElementById("stored_container_filter_studentName_input");
 
 let filter_nameToSearch="";
@@ -40,70 +44,120 @@ let filter_preferencesToSearch="";
 let filter_groupToSearch="";
 
 stored_container_filter_preferences.onclick=()=>{
-    stored_container_filter_group_magicBox.style.display="none";
-
-    
     if(stored_container_filter_preferences_magicBox.style.display=="none"){
         stored_container_filter_preferences_magicBox.style.display="block";
 
     }else{
         stored_container_filter_preferences_magicBox.style.display="none";
     }
+    stored_container_filter_group_magicBox.style.display="none";
+
+    
+  
 }
 stored_container_filter_group.onclick=()=>{
-    stored_container_filter_preferences_magicBox.style.display="none";
-
-   
     if(stored_container_filter_group_magicBox.style.display=="none"){
         stored_container_filter_group_magicBox.style.display="block";
 
     }else{
         stored_container_filter_group_magicBox.style.display="none";
     }
+    stored_container_filter_preferences_magicBox.style.display="none";
+
+   
+  
 }
 
 
 
 stored_container_filter_preferences_magicBox_child1.onclick=()=>{
+    console.log("child1preferences")
     filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child1.innerText;
+    stored_container_filter_preferences.innerHTML=`urgent <span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
+
 }
 stored_container_filter_preferences_magicBox_child2.onclick=()=>{
     filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child2.innerText;
+    stored_container_filter_preferences.innerHTML=`${filter_preferencesToSearch}<span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
 }
 stored_container_filter_preferences_magicBox_child3.onclick=()=>{
     filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child3.innerText;
+    stored_container_filter_preferences.innerHTML=`${filter_preferencesToSearch}<span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
 }
 stored_container_filter_preferences_magicBox_child4.onclick=()=>{
     filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child4.innerText;
+    stored_container_filter_preferences.innerHTML=`${filter_preferencesToSearch}<span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
 }
 stored_container_filter_preferences_magicBox_child5.onclick=()=>{
     filter_preferencesToSearch=stored_container_filter_preferences_magicBox_child5.innerText;
+    stored_container_filter_preferences.innerHTML=`${filter_preferencesToSearch}<span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
 }
+stored_container_filter_preferences_magicBox_child6.onclick=()=>{
+    filter_preferencesToSearch="";
+    stored_container_filter_preferences.innerHTML=`Select Preferences   <span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_preferences_magicBox.style.display="none";
+}
+
+
 
 
 stored_container_filter_group_magicBox_A.onclick=()=>{
     filter_groupToSearch="A";
+    stored_container_filter_group.innerHTML=`${filter_groupToSearch} <span id="stored_container_filter_group_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_group_magicBox.style.display="none";
 }
 stored_container_filter_group_magicBox_B.onclick=()=>{
     filter_groupToSearch="B";
+    stored_container_filter_group.innerHTML=`${filter_groupToSearch} <span id="stored_container_filter_group_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_group_magicBox.style.display="none";
+}
+stored_container_filter_group_magicBox_All.onclick=()=>{
+    filter_groupToSearch="";
+    stored_container_filter_group.innerHTML=`Select Group <span id="stored_container_filter_group_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_group_magicBox.style.display="none";
 }
 
 
-stored_container_filter_studentName_input.onclick=()=>{
-    filter_nameToSearch=stored_container_filter_studentName_input.value;
 
-}
+
 
 
 
 stored_container_filter_search.onclick=()=>{
 
-    console.log(filter_nameToSearch , filter_preferencesToSearch , filter_groupToSearch)
+
+    filter_nameToSearch=stored_container_filter_studentName_input.value;
+
+    console.log("name",filter_nameToSearch ,"preference", filter_preferencesToSearch ,"group", filter_groupToSearch)
     const arr=JSON.parse(localStorage.getItem('data'));
     let filteredArr=arr;
 
     if(filter_nameToSearch!=""){
-    filteredArr=filteredArr.filter((item)=>item.nameOfStudent==filter_nameToSearch);
+
+    filteredArr=filteredArr.filter((item)=>item.nameOfStudent.toLowerCase()==filter_nameToSearch.toLowerCase());
 }
 
 
@@ -119,15 +173,24 @@ stored_container_filter_search.onclick=()=>{
 
     if(filter_preferencesToSearch!=""){
         filter_preferencesToSearch= filter_preferencesToSearch.toLowerCase();
-        // console.log(filter_preferencesToSearch)
-    filteredArr=filteredArr.filter((item)=>item.preferences==filter_preferencesToSearch);
+        console.log(filter_preferencesToSearch) 
+    filteredArr=filteredArr.filter((item)=>item.preferences.toLowerCase()==filter_preferencesToSearch.toLowerCase());
     }
 
 fetchData(filteredArr);
 
+// filter_groupToSearch="";
+// filter_preferencesToSearch="";
+// filter_nameToSearch="";
 }
 stored_container_filter_reset.onclick=()=>{
     const arr=JSON.parse(localStorage.getItem('data'));
+    stored_container_filter_preferences.innerHTML=`Select Preferences   <span id="stored_container_filter_preferences_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
+    stored_container_filter_group.innerHTML=`Select Group <span id="stored_container_filter_group_icon" class="material-symbols-outlined">
+    expand_more
+    </span>`;
     fetchData(arr);
     console.log("entered reset")
 }
@@ -190,7 +253,7 @@ add_Student_left_form_preferences_red.style.backgroundColor="white";
 add_Student_left_form_preferences_blue.onclick=()=>{
     prefer=3;
     add_Student_left_form_preferences_red.style.backgroundColor="white";
-    add_Student_left_form_preferences_red.style.color="blackS";
+    add_Student_left_form_preferences_red.style.color="black";
     add_Student_left_form_preferences_yellow.style.backgroundColor="white";
     add_Student_left_form_preferences_blue.style.backgroundColor="blue";
     add_Student_left_form_preferences_blue.style.color="white";
@@ -208,6 +271,21 @@ const fetchData=(arr)=>{
 
     
     main_data_container.innerHTML="";  
+    if(arr.length==0){
+        const arr=document.createElement("div");
+        main_data_container.appendChild(arr);
+        arr.innerHTML=`
+        No queries match your criteria, either because no data has been added or there are no queries that match the selected filter.`;
+        arr.style.border="2px solid black";
+    arr.style.marginTop="2rem";
+    arr.style.fontSize="larger";
+    arr.style.padding= "5px";
+    arr.style.textAlign="center";
+    arr.style.marginBottom="10rem";
+    arr.style.fontFamily="sans-serif";
+
+    
+    }
     arr.map((data,index)=>{
         const div = document.createElement("div");
        if(data.color=="black"){ let colorm=data.preferences==="urgent"?"red":(data.preferences=="research-required"?"#f8b800":"blue");
@@ -257,8 +335,8 @@ data.color=colorm;}
         innerDiv1.appendChild(innerDiv1_complete);
          innerDiv1_complete.innerHTML=`Mark as  Completed`
          innerDiv1_complete.style.textAlign = "center";
-         innerDiv1_complete.style.width = "10rem";
-         innerDiv1_complete.style.padding = "5px";
+         innerDiv1_complete.style.width = "11rem";
+         innerDiv1_complete.style.padding = "3px";
          innerDiv1_complete.style.marginTop = "-4rem";
          innerDiv1_complete.style.border = `2px solid teal`;
          innerDiv1_complete.style.borderRadius = "5px";
@@ -266,10 +344,14 @@ data.color=colorm;}
          innerDiv1_complete.style.color = "white";
          innerDiv1_complete.style.fontSize="large"
          innerDiv1_complete.style.cursor="pointer";
+         innerDiv1_complete.style.fontFamily="sans-serif";
 
         innerDiv1_complete.onclick=()=>{
+
             data.color="green";
+            data.preferences="completed";
             localStorage.clear();
+           
     localStorage.setItem('data',JSON.stringify(arr));
     // const arr=JSON.parse(localStorage.getItem('data'));
    
@@ -281,17 +363,19 @@ fetchData(arr);
          innerDiv1_progress.innerHTML=`Mark as IN Progress`
          innerDiv1_progress.style.textAlign = "center";
          innerDiv1_progress.style.border = `2px solid green`;
-         innerDiv1_progress.style.width = "10rem";
-         innerDiv1_progress.style.padding = "5px";
+         innerDiv1_progress.style.width = "11rem";
+         innerDiv1_progress.style.padding = "3px";
          innerDiv1_progress.style.borderRadius = "5px";
          innerDiv1_progress.style.marginTop = "10px";
          innerDiv1_progress.style.backgroundColor = "teal";
          innerDiv1_progress.style.color = "white";
          innerDiv1_progress.style.fontSize="large";
          innerDiv1_progress.style.cursor="pointer";
+         innerDiv1_progress.style.fontFamily="sans-serif";
 
          innerDiv1_progress.onclick=()=>{
             data.color="teal";
+            data.preferences="IN-Progress";
             localStorage.clear();
     localStorage.setItem('data',JSON.stringify(arr));
     // const arr=JSON.parse(localS/torage.getItem('data'));
@@ -302,16 +386,17 @@ fetchData(arr);
         innerDiv1.appendChild(innerDiv1_delete);
         innerDiv1_delete.innerHTML="Delete Query"
         innerDiv1_delete.style.fontSize = "large";
-innerDiv1_delete.style.padding = "9px";
+innerDiv1_delete.style.padding = "3px";
 innerDiv1_delete.style.marginTop = "-4.4rem";
-innerDiv1_delete.style.border = `2px solid black`;
+innerDiv1_delete.style.border = `1px solid black`;
 innerDiv1_delete.style.borderRadius = "5px";
-innerDiv1_delete.style.width = "8rem";
-innerDiv1_delete.style.marginLeft = "69rem";
+innerDiv1_delete.style.width = "9rem";
+innerDiv1_delete.style.marginLeft = "68rem";
 innerDiv1_delete.style.textAlign = "center";
-innerDiv1_delete.style.backgroundColor="red";
+innerDiv1_delete.style.backgroundColor="#0474F2";
 innerDiv1_delete.style.color="white";
 innerDiv1_delete.style.cursor="pointer";
+innerDiv1_delete.style.fontFamily="sans-serif";
 
 innerDiv1_delete.onclick=()=>{
    
@@ -336,7 +421,7 @@ const innerDiv2_query = document.createElement("div");
 const innerDiv2_solution = document.createElement("div");
 
          div.appendChild(innerDiv2);
-         innerDiv2.style.marginTop="2rem";
+         innerDiv2.style.marginTop="1rem";
 
 
 
@@ -475,18 +560,20 @@ fetchData(arr);
         innerDiv2_solution_general_showGeneral.style.fontSize="15px";
         innerDiv2_solution_general_showGeneral.style.marginTop="-24px";
         innerDiv2_solution_general_showGeneral.style.cursor="pointer";
+        innerDiv2_solution_general_showGeneral.style.textAlign="center";
        
 
 
 
    innerDiv2_solution_general.appendChild(innerDiv2_solution_general_addGeneral);
-   innerDiv2_solution_general_addGeneral.innerHTML="Add";
+   innerDiv2_solution_general_addGeneral.innerHTML="Add ";
    innerDiv2_solution_general_addGeneral.style.border="1px solid";
    innerDiv2_solution_general_addGeneral.style.width="3rem";
    innerDiv2_solution_general_addGeneral.style.marginLeft="29.3rem";
    innerDiv2_solution_general_addGeneral.style.fontSize="15px";
    innerDiv2_solution_general_addGeneral.style.marginTop="-18px";
    innerDiv2_solution_general_addGeneral.style.cursor="pointer";
+   innerDiv2_solution_general_addGeneral.style.textAlign="center";
 
 
 
@@ -500,6 +587,7 @@ fetchData(arr);
    innerDiv2_solution_general_editGeneral.style.fontSize="15px";
    innerDiv2_solution_general_editGeneral.style.marginTop="-18.6px";
    innerDiv2_solution_general_editGeneral.style.cursor="pointer";
+   innerDiv2_solution_general_editGeneral.style.textAlign="center";
 
 //Box Clicked
 //Box Clicked
@@ -688,6 +776,7 @@ fetchData(arr);
         innerDiv2_solution_links_showlinks.style.fontSize="15px";
         innerDiv2_solution_links_showlinks.style.marginTop="-24px";
         innerDiv2_solution_links_showlinks.style.cursor="pointer";
+        innerDiv2_solution_links_showlinks.style.textAlign="center";
 
 
    innerDiv2_solution_links.appendChild(innerDiv2_solution_links_addlinks);
@@ -698,6 +787,8 @@ fetchData(arr);
    innerDiv2_solution_links_addlinks.style.fontSize="15px";
    innerDiv2_solution_links_addlinks.style.marginTop="-18.6px";
    innerDiv2_solution_links_addlinks.style.cursor="pointer";
+   innerDiv2_solution_links_addlinks.style.textAlign="center";
+
 
    
 
@@ -709,6 +800,8 @@ fetchData(arr);
    innerDiv2_solution_links_editlinks.style.fontSize="15px";
    innerDiv2_solution_links_editlinks.style.marginTop="-18.6px";
    innerDiv2_solution_links_editlinks.style.cursor="pointer";
+   innerDiv2_solution_links_editlinks.style.textAlign="center";
+
 
 
 //Box Clicked
@@ -797,10 +890,11 @@ innerDiv2_solution_links_BoxClicked_save.style.cursor="pointer";
 
 innerDiv2_solution_links_BoxClicked_save.onclick=()=>{
  let val= innerDiv2_solution_links_addBox.value;
- data.solutionLinks=(val);
+ data.solutionLinks=val;
+ console.log("links add" ,val)
  localStorage.clear();
     localStorage.setItem('data',JSON.stringify(arr));
-    const arr=JSON.parse(localStorage.getItem('data'));
+    // const arr=JSON.parse(localStorage.getItem('data'));
    
     fetchData(arr);
 }
@@ -897,6 +991,8 @@ fetchData(arr);
         innerDiv2_solution_images_showImages.style.fontSize="15px";
         innerDiv2_solution_images_showImages.style.marginTop="-24px";
         innerDiv2_solution_images_showImages.style.cursor="pointer";
+        innerDiv2_solution_images_showImages.style.textAlign="center";
+
 
 
    innerDiv2_solution_images.appendChild(innerDiv2_solution_images_addImages);
@@ -907,6 +1003,8 @@ fetchData(arr);
    innerDiv2_solution_images_addImages.style.fontSize="15px";
    innerDiv2_solution_images_addImages.style.marginTop="-18.6px";
    innerDiv2_solution_images_addImages.style.cursor="pointer";
+   innerDiv2_solution_images_addImages.style.textAlign="center";
+
 
 
    
@@ -919,6 +1017,8 @@ fetchData(arr);
    innerDiv2_solution_images_editImages.style.fontSize="15px";
    innerDiv2_solution_images_editImages.style.marginTop="-18.6px";
    innerDiv2_solution_images_editImages.style.cursor="pointer";
+   innerDiv2_solution_images_editImages.style.textAlign="center";
+
 
 
    // Box Clicked
@@ -1098,6 +1198,8 @@ fetchData(arr);
         innerDiv2_solution_video_showVideo.style.fontSize="15px";
         innerDiv2_solution_video_showVideo.style.marginTop="-24px";
         innerDiv2_solution_video_showVideo.style.cursor="pointer";
+        innerDiv2_solution_video_showVideo.style.textAlign="center";
+
 
 
    innerDiv2_solution_video.appendChild(innerDiv2_solution_video_addVideo);
@@ -1108,6 +1210,8 @@ fetchData(arr);
    innerDiv2_solution_video_addVideo.style.fontSize="15px";
    innerDiv2_solution_video_addVideo.style.marginTop="-18.6px";
    innerDiv2_solution_video_addVideo.style.cursor="pointer";
+   innerDiv2_solution_video_addVideo.style.textAlign="center";
+
 
    
 
@@ -1119,6 +1223,8 @@ fetchData(arr);
    innerDiv2_solution_video_editVideo.style.fontSize="15px";
    innerDiv2_solution_video_editVideo.style.marginTop="-18.6px";
    innerDiv2_solution_video_editVideo.style.cursor="pointer";
+   innerDiv2_solution_video_editVideo.style.textAign="center";
+
 
 // Box Clicked
 // Box Clicked
@@ -1201,7 +1307,7 @@ innerDiv2_solution_video_addVideo.onclick = () => {
         data.solutionVideos = val;
         localStorage.clear();
         localStorage.setItem('data',JSON.stringify(arr));
-        fetchData();
+        fetchData(arr);
     }
     innerDiv2_solution_video_showBox.style.display = "none";
     innerDiv2_solution_video_editBox.style.display = "none";
@@ -1246,7 +1352,7 @@ innerDiv2_solution_video_editVideo.onclick = () => {
         data.solutionVideos = val;
         localStorage.clear();
         localStorage.setItem('data',JSON.stringify(arr));
-        fetchData();
+        fetchData(arr);
     }
 
     innerDiv2_solution_video_showBox.style.display = "none";

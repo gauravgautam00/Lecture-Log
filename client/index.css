@@ -356,12 +356,16 @@ margin-top:2rem;
 #stored_container_heading{
     margin-top: 3rem;
     font-size: xx-large;
+    text-align: center  ;
+
 }
 #stored_container_filter{
     height:2rem;
     display: flex;
-    padding: 10px;
-    border-top:2px solid blue;
+    margin-top:1rem;
+    padding: 21px;
+    border:2px solid blue;
+
 }
 #stored_container_filter_title{
     text-align: center;
@@ -409,13 +413,13 @@ margin-top:2rem;
 }
 #stored_container_filter_preferences_magicBox{
     background-color: white;
-    top: -10px;
-    width: 11.1rem;
+    top: -24px;
+    width: 10.9rem;
     border: 1px solid;
     position: relative;
     /* display: block; */
     display: none;
-    left: 33.56rem;
+    left: 34.17rem;
 }
 .stored_container_filter_preferences_magicBox_class{
     margin-top:10px;
@@ -438,13 +442,13 @@ margin-top:2rem;
 }
 #stored_container_filter_group_magicBox{
     background-color: white;
-    top: -0.7rem;
-    width: 11.1rem;
+    top: -1.4rem;
+    width: 10.9rem;
     display: none;
     border: 1px solid;
     position: relative;
     /* display: block; */
-    left: 48.8rem;
+    left: 49.2rem;
 }
 .stored_container_filter_group_magicBox_class{
     margin-top:10px;
