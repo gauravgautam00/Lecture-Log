@@ -1,5 +1,5 @@
 :root{
-    --main-color:black
+    --dd:black;
 }
  
 body{
@@ -11,6 +11,8 @@ body{
 /* HEADER */
 
 #header{
+    color:var(--main-color);
+
     height: 3rem;
     /* margin-top: -8px; */
     background-color: black;
