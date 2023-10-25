@@ -1,9 +1,12 @@
 
-
+//main_container
 const main_container_queryAdd_button =document.getElementById("main_container_queryAdd_button");
 const main_container_queryView_button =document.getElementById("main_container_queryView_button");
-
 const main_data_container = document.getElementById("stored_data_container");
+const main_container_right_part=document.getElementById("main_container_right_part");
+const main_container_rightPart_leftButton=document.getElementById("main_container_rightPart_leftButton");
+const main_container_rightPart_righButton=document.getElementById("main_container_rightPart_rightButton");
+
 
 const add_query_form = document.getElementById("add_query_form");
 const add_student_form_input_studentName = document.getElementById("add_student_form_input_studentName");
@@ -38,6 +41,25 @@ const stored_container_filter_group_magicBox_B=document.getElementById("stored_c
 const stored_container_filter_group_magicBox_All=document.getElementById("stored_container_filter_group_magicBox_All");
 
 const stored_container_filter_studentName_input=document.getElementById("stored_container_filter_studentName_input");
+
+
+
+//scroller container left right
+main_container_rightPart_rightButton.onclick=()=>{
+    main_container_right_part.scrollBy({
+        left:476,
+        behavior:'smooth'
+    });
+}
+
+main_container_rightPart_leftButton.onclick=()=>{
+    main_container_right_part.scrollBy({
+        left:-470,
+        behavior:'smooth'
+    });
+}
+
+
 
 let filter_nameToSearch="";
 let filter_preferencesToSearch="";

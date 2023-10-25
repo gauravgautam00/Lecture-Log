@@ -72,11 +72,11 @@ body{
     width: 42%;
     /* border: 2px solid green; */
     overflow-x: scroll;
-    height: 32rem;
+    height: 28rem;
     display: flex;
     margin-left: 42rem;
     border-radius: 39px;
-    margin-top:-30.3rem;
+    margin-top:-31.3rem;
 }
 .main_container_rightPart_child{
     height: 27rem;
@@ -111,7 +111,7 @@ transform:scale(1.1);
     background-color: #0474F2;
     color: white;
     padding: 10px;
-    margin-top: -5.9rem;
+    margin-top: -1.9rem;
     font-size: larger;
     border-radius: 10px;
     text-align: center;
@@ -129,6 +129,24 @@ transform:scale(1.1);
     border-radius: 10px;
     text-align: center;
     margin-left: 19rem;
+    cursor: pointer;
+}
+#main_container_rightPart_leftButton{
+    color: white;
+    border: 2px solid white;
+    width: 2rem;
+    margin-top: -0.5rem;
+    margin-left: 55rem;
+    text-align: center;
+    cursor: pointer;
+}
+#main_container_rightPart_rightButton{
+    color: white;
+    border: 2px solid white;
+    width: 2rem;
+    text-align: center;
+    margin-left: 61rem;
+    margin-top: -2rem;
     cursor: pointer;
 }
 
